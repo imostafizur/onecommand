@@ -21,7 +21,7 @@ install_docker() {
 # Function to install Kubernetes tools (Minikube & Helm)
 install_k8s_tools() {
     echo "Starting Kubernetes tools installation..."
-    ./install_minikube_helm.sh
+    ./install_k8s_tools.sh
 }
 
 # Function to install kubectl
