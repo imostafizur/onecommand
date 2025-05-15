@@ -1,13 +1,13 @@
 
-# ðŸ“˜ Kubernetes Dashboard Deployment Guide
+# Kubernetes Dashboard Deployment Guide
 
 This guide walks you through the steps to deploy the **Kubernetes Dashboard**, create a service account for secure access, and generate a token to log in.
 
 ---
 
-## ðŸš€ Step-by-Step Instructions
+## Step-by-Step Instructions
 
-### ðŸ”¹ 1. Install Kubernetes Dashboard
+### 1. Install Kubernetes Dashboard
 
 Run the official installation command:
 
@@ -17,11 +17,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/a
 
 ---
 
-### ðŸ”¹ 2. Create a Service Account
+### 2. Create a Service Account
 
 Create a service account YAML file:
 
-ðŸ“„ `dashboard-user.yaml`
+ `dashboard-user.yaml`
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -38,9 +38,9 @@ kubectl apply -f dashboard-user.yaml
 
 ---
 
-### ðŸ”¹ 3. Create a ClusterRoleBinding
+### 3. Create a ClusterRoleBinding
 
-ðŸ“„ `dashboard-clusterrolebinding.yaml`
+ `dashboard-clusterrolebinding.yaml`
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -64,7 +64,7 @@ kubectl apply -f dashboard-clusterrolebinding.yaml
 
 ---
 
-### ðŸ”¹ 4. Generate Login Token
+### 4. Generate Login Token
 
 Generate the access token for the dashboard:
 
@@ -76,7 +76,7 @@ Copy this token. You will need it to log in.
 
 ---
 
-### ðŸ”¹ 5. Access the Dashboard
+### 5. Access the Dashboard
 
 Start the proxy:
 
@@ -94,13 +94,13 @@ http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 
 ---
 
-### âœ… Optional: Read-Only Access
+### Optional: Read-Only Access
 
 If you want to create a read-only user, modify the service account and role binding accordingly using `view` instead of `cluster-admin`.
 
 ---
 
-## ðŸ§¼ Cleanup
+## Cleanup
 
 To remove the Dashboard and associated accounts:
 
@@ -112,6 +112,6 @@ kubectl delete clusterrolebinding dashboard-user
 
 ---
 
-## ðŸ›¡ï¸ Security Note
+## Security Note
 
 Never use `cluster-admin` in production unless necessary. Create scoped `Role` or `ClusterRole` objects for fine-grained access control.
