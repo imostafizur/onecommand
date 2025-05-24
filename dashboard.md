@@ -94,6 +94,24 @@ http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 
 ---
 
+## 🔧 Accessing Kubernetes Dashboard in GitHub Codespaces
+
+Accessing the Kubernetes Dashboard inside a GitHub Codespace requires a small workaround due to HTTPS enforcement and reverse proxy limitations.
+
+---
+
+### ✅ Recommended Setup: Use kubectl port-forward
+
+Instead of using kubectl proxy (which may not work reliably in Codespaces), you can forward the dashboard service directly.
+
+### 🧪 Steps
+
+1. Start port forwarding in your Codespace terminal:
+
+   ```bash
+   kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8443:443
+
+
 ### Optional: Read-Only Access
 
 If you want to create a read-only user, modify the service account and role binding accordingly using `view` instead of `cluster-admin`.
