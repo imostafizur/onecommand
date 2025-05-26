@@ -43,4 +43,10 @@ fi
 
 # Kustomize
 echo -n "Kustomize: "
-i
+if command -v kustomize &> /dev/null; then
+    kustomize version
+else
+    echo "Not installed"
+fi
+
+echo "=================================="
