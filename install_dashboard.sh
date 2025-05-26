@@ -8,7 +8,8 @@ display_menu() {
     echo "1. Install Docker"
     echo "2. Install Kubernetes Tools (Minikube & Helm)"
     echo "3. Install kubectl"
-    echo "4. Exit"
+    echo "4. Check Installed Versions"
+    echo "5. Exit"
     echo "==============================="
 }
 
@@ -30,10 +31,16 @@ install_kubectl() {
     ./install_kubectl.sh
 }
 
+# Function to check installed versions
+check_versions() {
+    echo "Checking installed versions..."
+    ./check_versions.sh
+}
+
 # Main loop
 while true; do
     display_menu
-    read -p "Please select an option [1-4]: " choice
+    read -p "Please select an option [1-5]: " choice
 
     case $choice in
         1)
@@ -46,12 +53,14 @@ while true; do
             install_kubectl
             ;;
         4)
+            check_versions
+            ;;
+        5)
             echo "Exiting..."
             exit 0
             ;;
         *)
-            echo "Invalid option. Please select a number between 1 and 4."
+            echo "Invalid option. Please select a number between 1 and 5."
             ;;
     esac
 done
-
