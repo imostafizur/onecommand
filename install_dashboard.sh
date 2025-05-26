@@ -9,7 +9,8 @@ display_menu() {
     echo "2. Install Kubernetes Tools (Minikube & Helm)"
     echo "3. Install kubectl"
     echo "4. Check Installed Versions"
-    echo "5. Exit"
+    echo "5. Install Kustomize"
+    echo "6. Exit"
     echo "==============================="
 }
 
@@ -37,10 +38,16 @@ check_versions() {
     ./check_versions.sh
 }
 
+# Function to install Kustomize
+install_kustomize() {
+    echo "Starting Kustomize installation..."
+    ./install_kustomize.sh
+}
+
 # Main loop
 while true; do
     display_menu
-    read -p "Please select an option [1-5]: " choice
+    read -p "Please select an option [1-6]: " choice
 
     case $choice in
         1)
@@ -56,11 +63,14 @@ while true; do
             check_versions
             ;;
         5)
+            install_kustomize
+            ;;
+        6)
             echo "Exiting..."
             exit 0
             ;;
         *)
-            echo "Invalid option. Please select a number between 1 and 5."
+            echo "Invalid option. Please select a number between 1 and 6."
             ;;
     esac
 done
