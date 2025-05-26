@@ -14,7 +14,12 @@ This script installs Docker on your system.
 
    ```sh
    chmod +x install_dashboard.sh
+   ```
+   ```sh
+   chmod +x *.sh
+
 2. **Run**
 
    ```sh
    ./install_dashboard.sh
+
