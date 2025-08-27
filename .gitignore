@@ -1,0 +1,38 @@
+# OneCommand .gitignore
+# Ignore temporary and generated files
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local configuration overrides
+onecommand.local.conf
+
+# Downloaded packages (temporary)
+*.deb
+*.rpm
+*.tar.gz
+kustomize
+helm-*
+minikube*
