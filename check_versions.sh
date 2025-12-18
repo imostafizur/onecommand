@@ -4,49 +4,47 @@ echo "=================================="
 echo "      Installed Versions"
 echo "=================================="
 
-# Docker
-echo -n "Docker: "
-if command -v docker &> /dev/null; then
-    docker --version
-else
-    echo "Not installed"
-fi
+print_tool_version() {
+    local name=$1 cmd=$2
+    shift 2
 
-# kubectl
-echo -n "kubectl: "
-if command -v kubectl &> /dev/null; then
+    echo -n "$name: "
+    if command -v "$cmd" &> /dev/null; then
+        "$@"
+    else
+        echo "Not installed"
+    fi
+}
+
+docker_version() {
+    docker --version
+}
+
+kubectl_version() {
     ver=$(kubectl version --client -o json 2>/dev/null | grep gitVersion | cut -d '"' -f4)
     if [[ -n "$ver" ]]; then
         echo "$ver"
     else
         echo "Installed, but version could not be determined"
     fi
-else
-    echo "Not installed"
-fi
+}
 
-# Minikube
-echo -n "Minikube: "
-if command -v minikube &> /dev/null; then
+minikube_version() {
     minikube version | head -n 1
-else
-    echo "Not installed"
-fi
+}
 
-# Helm
-echo -n "Helm: "
-if command -v helm &> /dev/null; then
+helm_version() {
     helm version --short
-else
-    echo "Not installed"
-fi
+}
 
-# Kustomize
-echo -n "Kustomize: "
-if command -v kustomize &> /dev/null; then
+kustomize_version() {
     kustomize version
-else
-    echo "Not installed"
-fi
+}
+
+print_tool_version "Docker" docker docker_version
+print_tool_version "kubectl" kubectl kubectl_version
+print_tool_version "Minikube" minikube minikube_version
+print_tool_version "Helm" helm helm_version
+print_tool_version "Kustomize" kustomize kustomize_version
 
 echo "=================================="
