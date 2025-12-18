@@ -4,6 +4,7 @@ echo "=================================="
 echo "      Installed Versions"
 echo "=================================="
 
+# print_tool_version <display_name> <command_name> <version_function>
 print_tool_version() {
     local name=$1 cmd=$2
     shift 2
